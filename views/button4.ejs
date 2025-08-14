@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Share What You Like — Teachers</title>
+  <link rel="stylesheet" href="/button3456.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>We value your insights!</h2>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="error-message">
+        <h3>Submission Failed</h3>
+        <p><%= error %></p>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== 'undefined' && success) { %>
+      <div class="thank-you">
+        <h3>Thank you for your contribution!</h3>
+        <p><%= success %></p>
+      </div>
+    <% } %>
+
+    <form action="/button4" method="POST" novalidate>
+      <label>What you like about Prof. Syed Zaki:</label>
+      <textarea name="sd" rows="5" required><%= typeof sd !== 'undefined' ? sd : '' %></textarea>
+
+      <label>What you like about Prof. Mehnaz Sheikh:</label>
+      <textarea name="ms" rows="5" required><%= typeof ms !== 'undefined' ? ms : '' %></textarea>
+
+      <label>What you like about Prof. Rajni Singh:</label>
+      <textarea name="rs" rows="5" required><%= typeof rs !== 'undefined' ? rs : '' %></textarea>
+
+      <label>What you like about Prof. Mrunali Vaidya:</label>
+      <textarea name="mv" rows="5" required><%= typeof mv !== 'undefined' ? mv : '' %></textarea>
+
+      <label>What you like about Prof. Bulbul Das:</label>
+      <textarea name="bd" rows="5" required><%= typeof bd !== 'undefined' ? bd : '' %></textarea>
+
+      <input type="hidden" name="userName" value="<%= user ? user.name : '' %>">
+      <input type="hidden" name="user_id" value="<%= user ? user.id : '' %>">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Evaluation Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/button1.css">
+</head>
+<body>
+      <% if (error) { %>
+  <div class="error-message">
+    <h3>Submission Failed</h3>
+    <p><%= error %></p>
+  </div>
+ <% } %>
+
+<% if (success) { %>
+  <div class="thank-you">
+    <h3>Thank you!</h3>
+    <p><%= success %></p>
+  </div>
+<% } %>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="assessment-header">
+            <h1>Teacher Performance Assessment</h1>
+            <div class="header-wave"></div>
+        </header>
+
+       <!-- Instructions Section -->
+       <section class="guidelines">
+        <div class="guideline-card">
+            <div class="icon">📋</div>
+            <h2>Assessment Guidelines</h2>
+            <p>Provide constructive feedback to help improve teaching quality. Your responses will remain confidential.</p>
+        </div>
+        
+        <div class="instructions">
+            <div class="instruction-item">
+                <span class="bullet">✔</span>
+                <p>Base your assessment on personal experience</p>
+            </div>
+            <div class="instruction-item">
+                <span class="bullet">✔</span>
+                <p>Be sincere and complete all sections</p>
+            </div>
+            <div class="instruction-item highlight">
+                <span class="bullet">!</span>
+                <p>Rating scale: 0 (Poor) to 10 (Excellent)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Information Table -->
+    <section class="faculty-table">
+        <h2 class="section-title">Faculty Information</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name of the Subject</th>
+                        <th>Initial</th>
+                        <th>Faculty Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Code">TOC</td>
+                        <td data-label="Name of the Subject">Theory of Computation</td>
+                        <td data-label="Initial">MS</td>
+                        <td data-label="Faculty Name">Prof. Mehnaz Sheikh</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Code">HCI</td>
+                        <td data-label="Name of the Subject">Human-Computer Interaction</td>
+                        <td data-label="Initial">SZ</td>
+                        <td data-label="Faculty Name">Prof. Syed Zaki</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Code">DBMS</td>
+                        <td data-label="Name of the Subject">Database Management System</td>
+                        <td data-label="Initial">RS</td>
+                        <td data-label="Faculty Name">Prof. Rajni Singh</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Code">SI</td>
+                        <td data-label="Name of the Subject">Software Engineering</td>
+                        <td data-label="Initial">MV</td>
+                        <td data-label="Faculty Name">Prof. Mrunali Vaidya</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Code">BC</td>
+                        <td data-label="Name of the Subject">Business Communication</td>
+                        <td data-label="Initial">BD</td>
+                        <td data-label="Faculty Name">Prof. Bulbul Das</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+        <!-- Evaluation Form -->
+        <section class="evaluation-section">
+            <h2 class="section-title">Performance Evaluation Matrix</h2>
+             <form action="/button1" method="post" id="evaluation-form" class="evaluation-form" novalidate>
+                <div class="table-wrapper">
+                    <table id="evaluationTable">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Attributes ↓</th>
+                                <th colspan="5">Name of the Subject/Code →</th>
+                            </tr>
+                            <tr>
+                                <th>TOC</th>
+                                <th>HCI</th>
+                                <th>DBMS</th>
+                                <th>SI</th>
+                                <th>BC</th>
+                            </tr>
+                            <tr>
+                                <td>Staff in charge →</td>
+                                <td>MS</td>
+                                <td>SZ</td>
+                                <td>RS</td>
+                                <td>MV</td>
+                                <td>BD</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows for evaluation inputs -->
+                            <tr>
+                                <td>1. Preparation for lecture</td>
+                                <td><input type="number" name="toc1" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci1" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms1" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si1" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc1" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>2. Capacity to clarify doubt</td>
+                                <td><input type="number" name="toc2" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci2" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms2" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si2" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc2" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>3. Communication and presentation skills</td>
+                                <td><input type="number" name="toc3" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci3" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms3" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si3" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc3" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>4. Motivating students towards learning</td>
+                                <td><input type="number" name="toc4" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci4" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms4" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si4" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc4" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>5. Giving practical examples/illustration</td>
+                                <td><input type="number" name="toc5" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci5" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms5" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si5" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc5" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>6. Maintenance of discipline in the class</td>
+                                <td><input type="number" name="toc6" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci6" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms6" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si6" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc6" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>7. Regularity and punctuality in taking class</td>
+                                <td><input type="number" name="toc7" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci7" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms7" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si7" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc7" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>8. Availability of teacher</td>
+                                <td><input type="number" name="toc8" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci8" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms8" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si8" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc8" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>9. Solving and discussing the examination problems</td>
+                                <td><input type="number" name="toc9" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci9" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms9" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si9" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc9" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                            <tr>
+                                <td>10. Completion of the syllabus</td>
+                                <td><input type="number" name="toc10" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="hci10" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="dbms10" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="si10" min="0" max="10" class="eval-input"></td>
+                                <td><input type="number" name="bc10" min="0" max="10" class="eval-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-footer">
+                    <p class="disclaimer">All information provided will remain confidential</p>
+                    <div class="form-controls">
+
+                        <button type="submit" class="submit-btn">
+                            Submit Evaluation
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+                 
+<script>
+        // Client-side validation
+        document.getElementById('evaluation-form').addEventListener('submit', (e) => {
+            const inputs = document.querySelectorAll('.eval-input');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                input.style.borderColor = '';
+                const value = input.value.trim();
+                
+                if (value === '' || isNaN(value) || value < 0 || value > 10) {
+                    input.style.borderColor = 'red';
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                document.getElementById('serverError').innerHTML = 
+                    '<strong>Error:</strong> Please fill all ratings correctly (0-10)';
+                document.getElementById('serverError').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Keyboard navigation
+        document.querySelectorAll('.eval-input').forEach((input, idx, arr) => {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (idx < arr.length - 1) {
+                        arr[idx + 1].focus();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

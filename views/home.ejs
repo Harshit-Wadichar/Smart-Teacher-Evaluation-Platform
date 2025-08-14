@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Teacher Evaluation Platform</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/home.css">
+  </head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="glass-header">
+        <nav>
+            <div class="nav-links">
+              <span class="user-greeting">
+                <i class="fas fa-user"></i> Welcome, <%= user.name %>
+              </span>
+                <a href="help" class="nav-link"><i class="fas fa-question-circle"></i> Help</a>
+                <a href="/auth/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+            <h1 class="title">Smart Teacher Evaluation Platform</h1>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="grid-container">
+            <!-- Row 1 -->
+            <div class="card evaluate" onclick="openNewPage1()">
+                <div class="card-image">
+                    <img src="/images/feedback.jpg" alt="Evaluation">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-clipboard-check"></i> Evaluate Performance</h3>
+                    <p>Rate and evaluate teacher's performance</p>
+                </div>
+            </div>
+
+            <div class="card results" onclick="openNewPage2()">
+                <div class="card-image">
+                    <img src="/images/result.jpg" alt="Results">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-chart-line"></i> View Results</h3>
+                    <p>See evaluation results and analytics</p>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="card tips" onclick="openNewPage3()">
+                <div class="card-image">
+                    <img src="/images/tips.jpg" alt="Improvement Tips">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-lightbulb"></i> Improvement Tips</h3>
+                    <p>Share constructive feedback for teachers</p>
+                </div>
+            </div>
+
+            <div class="card teaching" onclick="openNewPage4()">
+                <div class="card-image">
+                    <img src="/images/teacher.jpg" alt="Teaching Feedback">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Feedback</h3>
+                    <p>Share what you like about teaching methods</p>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="card class-improvement" onclick="openNewPage5()">
+                <div class="card-image">
+                    <img src="/images/class.jpg" alt="Class Improvement">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-book-open"></i> Class Improvement</h3>
+                    <p>Suggestions for better classroom experience</p>
+                </div>
+            </div>
+
+            <div class="card college-improvement" onclick="openNewPage6()">
+                <div class="card-image">
+                    <img src="/images/college.jpeg" alt="College Improvement">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-university"></i> College Improvement</h3>
+                    <p>Suggestions for institutional improvements</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <p>&copy; 2024 Smart Teacher Evaluation Platform | Mini Project</p>
+    </footer>
+
+    <script>
+
+    function helpPage() { 
+    window.location.href = '/help'; }
+    
+    function openNewPage1() { 
+    window.location.href = '/button1'; }
+
+    function openNewPage2() { 
+        window.location.href = '/button2'; }
+
+    function openNewPage3() { 
+        window.location.href = '/button3'; }
+
+    function openNewPage4() {
+     window.location.href = '/button4'; }
+
+    function openNewPage5() {
+    window.location.href = '/button5'; }
+
+    function openNewPage6() {
+    window.location.href = '/button6'; }
+
+    
+// Clear browser history
+history.replaceState(null, document.title, location.href);
+history.pushState(null, document.title, location.href);
+
+window.addEventListener('popstate', function(event) {
+    history.replaceState(null, document.title, location.href);
+    window.location.href = '/home'; // Force redirect
+});
+
+// Clear form cache
+if (performance.navigation.type === 2) { // If page was restored from back/forward cache
+    location.reload(true);
+}
+
+    document.querySelector('.nav-link[href="/auth/logout"]').addEventListener('click', function(e) {
+    if(!confirm('Are you sure you want to logout?')) {
+        e.preventDefault();
+    }
+    });
+
+    </script>
+</body>
+</html>

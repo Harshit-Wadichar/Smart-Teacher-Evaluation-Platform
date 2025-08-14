@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Provide Helpful Tips for Class Improvement</title>
+  <link rel="stylesheet" href="/button3456.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>We value your insights!</h2>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="error-message"><h3>Submission Failed</h3><p><%= error %></p></div>
+    <% } %>
+
+    <% if (typeof success !== 'undefined' && success) { %>
+      <div class="thank-you"><h3>Thank you!</h3><p><%= success %></p></div>
+    <% } %>
+
+    <form action="/button5" method="POST" id="tipsForm" novalidate>
+      <label for="tip">Your Helpful Tip to Improve your Class:</label>
+      <textarea id="tip" name="tip" rows="5" placeholder="Share your ideas here..." required><%= typeof tip !== 'undefined' ? tip : '' %></textarea>
+
+      <input type="hidden" name="userName" value="<%= user ? user.name : '' %>">
+      <input type="hidden" name="user_id" value="<%= user ? user.id : '' %>">
+
+      <button type="submit" id="submitBtn">Submit Tip</button>
+    </form>
+  </div>
+</body>
+</html>

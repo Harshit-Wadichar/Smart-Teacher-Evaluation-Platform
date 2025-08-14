@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Provide Helpful Tips for Teacher's Improvement</title>
+  <link rel="stylesheet" href="/button3456.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>We value your insights!</h2>
+
+       <% if (error) { %>
+  <div class="error-message">
+    <h3>Submission Failed</h3>
+    <p><%= error %></p>
+  </div>
+ <% } %>
+
+<% if (success) { %>
+  <div class="thank-you">
+    <h3>Thank you!</h3>
+    <p><%= success %></p>
+  </div>
+<% } %>
+
+    <form id="tipsForm" action="/button3" method="POST" novalidate>
+      <label>Your Helpful Tip for Prof. Syed Zaki:</label>
+      <textarea name="sd" rows="5" required><%= typeof sd !== 'undefined' ? sd : '' %></textarea>
+
+      <label>Your Helpful Tip for Prof. Mehnaz Sheikh:</label>
+      <textarea name="ms" rows="5" required><%= typeof ms !== 'undefined' ? ms : '' %></textarea>
+
+      <label>Your Helpful Tip for Prof. Rajni Singh:</label>
+      <textarea name="rs" rows="5" required><%= typeof rs !== 'undefined' ? rs : '' %></textarea>
+
+      <label>Your Helpful Tip for Prof. Mrunali Vaidya:</label>
+      <textarea name="mv" rows="5" required><%= typeof mv !== 'undefined' ? mv : '' %></textarea>
+
+      <label>Your Helpful Tip for Prof. Bulbul Das:</label>
+      <textarea name="bd" rows="5" required><%= typeof bd !== 'undefined' ? bd : '' %></textarea>
+
+      <!-- Hidden fallback username field (usually session provides it) -->
+      <input type="hidden" name="userName" value="<%= user ? user.name : '' %>">
+
+      <button type="submit" id="submitBtn">Submit</button>
+
+   
+    </form>
+  </div>
+</body>
+</html>

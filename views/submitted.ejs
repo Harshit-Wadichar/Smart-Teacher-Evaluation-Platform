@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You Page</title>
+  <link rel="stylesheet" href="/submitted.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Image Section -->
+    <div class="image-container">
+      <img src="images/a teacher saying thank you.png" alt="Thank You Image">
+    </div>
+    
+    <!-- Thank You Message Section -->
+    <div class="thank-you-section">
+      <h1 class="thank-you">Thank You!</h1>
+      <p>Your feedback has been successfully submitted ;)</p>
+    </div>
+
+    <!-- Go Back Button -->
+    <button id="submit" onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+  
+  function goBack() {
+    window.location.href = "/home";
+  }
+
+ setTimeout(function() {
+    window.location.href = "/home";
+ }, 3500); // Redirects after 5 seconds
+
+  </script>
+</body>
+</html>

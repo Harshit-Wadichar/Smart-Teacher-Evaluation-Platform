@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Teacher Rankings</title>
+  <link rel="stylesheet" href="/button2.css">
+  <style>
+   </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Teacher Performance Rankings</h1>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <table>
+      <thead>
+        <tr><th>Rank</th><th>Educator</th><th>Overall Score</th></tr>
+      </thead>
+      <tbody>
+        <% if (rankings && rankings.length) { %>
+          <% rankings.forEach((teacher, idx) => { %>
+            <tr class="rank-row" data-code="<%= teacher.code %>">
+              <td><div class="rank-circle"><%= idx+1 %></div></td>
+              <td><%= teacher.name %></td>
+              <td><strong><%= (typeof teacher.avg === 'number') ? teacher.avg.toFixed(2) : '0.00' %></strong>/10</td>
+            </tr>
+
+            <% var d = detailsMap[teacher.code] || {}; %>
+            <tr class="detail-row">
+              <td colspan="3">
+                <div class="details-grid">
+                  <div class="details-item"><strong>Lecture Preparation</strong><div><%= d.preparation || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Doubt Clarification</strong><div><%= d.clarification || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Communication</strong><div><%= d.communication || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Motivation</strong><div><%= d.motivation || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Practical Examples</strong><div><%= d.practical_examples || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Discipline</strong><div><%= d.discipline || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Punctuality</strong><div><%= d.punctuality || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Availability</strong><div><%= d.availability || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Exam Problem Solving</strong><div><%= d.exam_problems || 0 %>/10</div></div>
+                  <div class="details-item"><strong>Syllabus Completion</strong><div><%= d.syllabus || 0 %>/10</div></div>
+                </div>
+              </td>
+            </tr>
+          <% }); %>
+        <% } else { %>
+          <tr><td colspan="3">No evaluation data available</td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // simple expand/collapse: clicking a rank-row toggles its detail-row (the next sibling)
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('tr.rank-row').forEach(row => {
+        row.addEventListener('click', () => {
+          // clear existing active rows
+          document.querySelectorAll('tr.rank-row.active').forEach(r => r.classList.remove('active'));
+          // toggle this row
+          const isActive = row.classList.toggle('active');
+          // if turned off, remove active class
+          if (!isActive) row.classList.remove('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
